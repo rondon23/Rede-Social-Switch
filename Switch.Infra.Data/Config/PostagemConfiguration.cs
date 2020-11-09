@@ -11,12 +11,15 @@ namespace Switch.Infra.Data.Config
     {
         public void Configure(EntityTypeBuilder<Postagem> builder)
         {
-            builder.ToTable("postagens");
+            builder.HasKey(u => u.Id);
+            builder.Property(p => p.DataPublicacao)
+                .IsRequired();
+            builder.Property(p => p.Texto)
+                .IsRequired()
+                .HasMaxLength(400);
 
-            builder.Property(e => e.Id).HasColumnType("int(11)");
-
-            builder.Property(e => e.Texto)
-                .HasColumnType("longtext");
+            builder.HasOne(p => p.Usuario)
+                .WithMany(u => u.Postagens);
         }
     }
 }
