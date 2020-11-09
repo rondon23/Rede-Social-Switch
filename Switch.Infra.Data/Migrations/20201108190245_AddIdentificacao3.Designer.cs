@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Switch.Infra.Data.Context;
 
 namespace Switch.Infra.Data.Migrations
 {
     [DbContext(typeof(SwitchContext))]
-    partial class SwitchContextModelSnapshot : ModelSnapshot
+    [Migration("20201108190245_AddIdentificacao3")]
+    partial class AddIdentificacao3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,12 +54,7 @@ namespace Switch.Infra.Data.Migrations
                     b.Property<string>("Texto")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int(11)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("postagens");
                 });
@@ -118,15 +115,6 @@ namespace Switch.Infra.Data.Migrations
                     b.HasOne("Switch.Domain.Entities.Usuario", "Usuario")
                         .WithOne("Identificacao")
                         .HasForeignKey("Switch.Domain.Entities.Identificacao", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Switch.Domain.Entities.Postagem", b =>
-                {
-                    b.HasOne("Switch.Domain.Entities.Usuario", "Usuario")
-                        .WithMany("Postagens")
-                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

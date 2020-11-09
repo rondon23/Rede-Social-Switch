@@ -14,6 +14,7 @@ namespace Switch.Infra.Data.Context
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Postagem> Postagens { get; set; }
         public DbSet<StatusRelacionamento> StatusRelacionamento { get; set; }
+        public DbSet<Identificacao> Identificacao { get; set; }
 
         public SwitchContext(DbContextOptions options) : base(options)
         {
@@ -23,6 +24,8 @@ namespace Switch.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new PostagemConfiguration());
+            modelBuilder.ApplyConfiguration(new StatusRelacionamentoConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

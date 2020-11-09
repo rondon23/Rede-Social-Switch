@@ -16,9 +16,7 @@ namespace Switch.Infra.Data.Config
             builder.Property(e => e.Id).HasColumnType("int(11)");
 
             builder.Property(e => e.Texto)
-                .HasColumnType("longtext")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("longtext");
         }
     }
 }

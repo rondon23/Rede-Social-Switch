@@ -15,35 +15,27 @@ namespace Switch.Infra.Data.Config
 
             builder.Property(e => e.Email)
                 .IsRequired()
-                .HasColumnType("varchar(400)")
-                .HasDefaultValueSql("''")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("varchar(400)");
 
             builder.Property(e => e.Nome)
                 .IsRequired()
-                .HasColumnType("varchar(400)")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("varchar(400)");
 
             builder.Property(e => e.Senha)
                 .IsRequired()
-                .HasColumnType("varchar(400)")
-                .HasDefaultValueSql("''")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("varchar(400)");
 
             builder.Property(e => e.SobreNome)
                 .IsRequired()
-                .HasColumnType("varchar(400)")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("varchar(400)");
 
             builder.Property(e => e.UrlFoto)
                 .IsRequired()
-                .HasColumnType("varchar(400)")
-                .HasCharSet("utf8mb4")
-                .HasCollation("utf8mb4_0900_ai_ci");
+                .HasColumnType("varchar(400)");
+
+            builder.HasOne(u => u.Identificacao)
+                .WithOne(i => i.Usuario)
+                .HasForeignKey<Identificacao>(i => i.UsuarioId);
         }
     }
 }

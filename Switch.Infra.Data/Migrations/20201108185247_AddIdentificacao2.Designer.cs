@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Switch.Infra.Data.Context;
 
 namespace Switch.Infra.Data.Migrations
 {
     [DbContext(typeof(SwitchContext))]
-    partial class SwitchContextModelSnapshot : ModelSnapshot
+    [Migration("20201108185247_AddIdentificacao2")]
+    partial class AddIdentificacao2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,14 +52,11 @@ namespace Switch.Infra.Data.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Texto")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("longtext")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("postagens");
                 });
@@ -69,7 +68,9 @@ namespace Switch.Infra.Data.Migrations
                         .HasColumnType("int(11)");
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("longtext");
+                        .HasColumnType("longtext")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.HasKey("Id");
 
@@ -87,26 +88,40 @@ namespace Switch.Infra.Data.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(400)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(400)")
+                        .HasDefaultValueSql("''")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("varchar(400)");
+                        .HasColumnType("varchar(400)")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("varchar(400)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(400)")
+                        .HasDefaultValueSql("''")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.Property<int>("Sexo")
                         .HasColumnType("int");
 
                     b.Property<string>("SobreNome")
                         .IsRequired()
-                        .HasColumnType("varchar(400)");
+                        .HasColumnType("varchar(400)")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.Property<string>("UrlFoto")
                         .IsRequired()
-                        .HasColumnType("varchar(400)");
+                        .HasColumnType("varchar(400)")
+                        .HasAnnotation("MySql:CharSet", "utf8mb4")
+                        .HasAnnotation("MySql:Collation", "utf8mb4_0900_ai_ci");
 
                     b.HasKey("Id");
 
@@ -118,15 +133,6 @@ namespace Switch.Infra.Data.Migrations
                     b.HasOne("Switch.Domain.Entities.Usuario", "Usuario")
                         .WithOne("Identificacao")
                         .HasForeignKey("Switch.Domain.Entities.Identificacao", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Switch.Domain.Entities.Postagem", b =>
-                {
-                    b.HasOne("Switch.Domain.Entities.Usuario", "Usuario")
-                        .WithMany("Postagens")
-                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
