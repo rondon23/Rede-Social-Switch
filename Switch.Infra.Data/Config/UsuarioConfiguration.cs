@@ -9,31 +9,6 @@ namespace Switch.Infra.Data.Config
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-
-            //builder.ToTable("usuarios");
-
-            //builder.Property(e => e.Id).HasColumnType("int(11)");
-
-            //builder.Property(e => e.Email)
-            //    .IsRequired()
-            //    .HasColumnType("varchar(400)");
-
-            //builder.Property(e => e.Nome)
-            //    .IsRequired()
-            //    .HasColumnType("varchar(400)");
-
-            //builder.Property(e => e.Senha)
-            //    .IsRequired()
-            //    .HasColumnType("varchar(400)");
-
-            //builder.Property(e => e.SobreNome)
-            //    .IsRequired()
-            //    .HasColumnType("varchar(400)");
-
-            //builder.Property(e => e.UrlFoto)
-            //    .IsRequired()
-            //    .HasColumnType("varchar(400)");
-
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Nome).HasMaxLength(400).IsRequired();
             builder.Property(u => u.SobreNome).HasMaxLength(400).IsRequired();
@@ -47,7 +22,10 @@ namespace Switch.Infra.Data.Config
                 .WithOne(i => i.Usuario)
                 .HasForeignKey<Identificacao>(i => i.UsuarioId);
 
+            builder.HasMany(u => u.Comentarios).WithOne(c => c.Usuario);
             builder.HasMany(u => u.Postagens).WithOne(p => p.Usuario);
+
+
 
         }
     }
