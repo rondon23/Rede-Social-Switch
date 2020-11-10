@@ -18,6 +18,12 @@ namespace Switch.Infra.Data.Context
         public DbSet<Identificacao> Identificacao { get; set; }
         public DbSet<UsuarioGrupo> UsuariosGrupos { get; set; }
 
+        public DbSet<Amigo> Amigos { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
+        public DbSet<InstituicaoEnsino> InstituicoesEnsino { get; set; }
+        public DbSet<LocalTrabalho> LocaisTrabalho { get; set; }
+        public DbSet<ProcurandoPor> ProcurandoPor { get; set; }
+
         public SwitchContext(DbContextOptions options) : base(options)
         {
 

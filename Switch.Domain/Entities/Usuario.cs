@@ -21,7 +21,7 @@ namespace Switch.Domain.Entities
         public virtual ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
         public virtual ICollection<InstituicaoEnsino> InstituicoesEnsino { get; set; }
         public virtual ICollection<Amigo> Amigos { get; set; }
-        public ICollection<Comentario> Comentarios { get; set; }
+        public virtual ICollection<Comentario> Comentarios { get; set; }
 
         public Usuario()
         {

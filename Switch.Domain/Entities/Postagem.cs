@@ -15,5 +15,6 @@ namespace Switch.Domain.Entities
         public int GrupoId { get; set; }
         public virtual Grupo Grupo { get; set; }
         public string UrlContetudo { get; set; }
+        public virtual ICollection<Comentario> Comentarios { get; set; }
     }
 }

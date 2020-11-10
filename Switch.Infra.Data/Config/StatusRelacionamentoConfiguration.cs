@@ -11,12 +11,15 @@ namespace Switch.Infra.Data.Config
     {
         public void Configure(EntityTypeBuilder<StatusRelacionamento> builder)
         {
-            builder.ToTable("statusrelacionamento");
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Descricao);
 
-            builder.Property(e => e.Id).HasColumnType("int(11)");
-
-            builder.Property(e => e.Descricao)
-                .HasColumnType("longtext");
+            builder.HasData(
+                new StatusRelacionamento() { Id = 1, Descricao = "NaoEspecificado" },
+                new StatusRelacionamento() { Id = 2, Descricao = "Solteiro" },
+                new StatusRelacionamento() { Id = 3, Descricao = "Casado" },
+                new StatusRelacionamento() { Id = 4, Descricao = "EmRelacionamentoSerio" }
+                );
         }
     }
 }
