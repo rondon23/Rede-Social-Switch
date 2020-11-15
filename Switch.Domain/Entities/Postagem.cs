@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Switch.Domain.Entities
@@ -14,7 +13,7 @@ namespace Switch.Domain.Entities
         public virtual Usuario Usuario { get; set; }
         public int GrupoId { get; set; }
         public virtual Grupo Grupo { get; set; }
-        public string UrlContetudo { get; set; }
-        public virtual ICollection<Comentario> Comentarios { get; set; }
+        public string UrlConteudo { get; set; }
+        public virtual ICollection<Comentario> Comentarios { get; private set; }
     }
 }

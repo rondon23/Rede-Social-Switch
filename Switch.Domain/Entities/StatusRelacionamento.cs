@@ -14,5 +14,6 @@ namespace Switch.Domain.Entities
         public bool Solteiro { get { return Id == (int)StatusRelacionamentoEnum.Solteiro; } }
         public bool Casado { get { return Id == (int)StatusRelacionamentoEnum.Casado; } }
         public bool RelacionamentoSerio { get { return Id == (int)StatusRelacionamentoEnum.EmRelacionamentoSerio; } }
+
     }
 }

@@ -13,6 +13,5 @@ namespace Switch.Domain.Entities
         public DateTime DataAdmissao { get; set; }
         public DateTime? DataSaida { get; set; }
         public bool EmpresaAtual { get; set; }
-
     }
 }

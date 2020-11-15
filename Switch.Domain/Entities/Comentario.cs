@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Switch.Domain.Entities
 {
@@ -10,8 +8,7 @@ namespace Switch.Domain.Entities
         public DateTime DataPublicacao { get; set; }
         public string Texto { get; set; }
         public int UsuarioId { get; set; }
-        public virtual Usuario Usuario { get; set; }
-
+        public virtual Usuario Usuario { get; private set; }
 
         public Comentario()
         {
@@ -21,9 +18,7 @@ namespace Switch.Domain.Entities
         public void SetUsuario(Usuario usuario)
         {
             if (usuario != null)
-            {
                 Usuario = usuario;
-            }
         }
     }
 }
